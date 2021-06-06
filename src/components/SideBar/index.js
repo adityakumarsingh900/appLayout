@@ -7,21 +7,18 @@ import {
   ResponsiveContext,
   Nav,
 } from "grommet";
+import { useHistory } from "react-router-dom";
 
 import {
-  Analytics,
-  Clock,
-  Configure,
   Projects,
-  Split,
   StatusInfoSmall,
   FormNext,
   FormPrevious,
+  Home,
 } from "grommet-icons";
 
 import Notification from 'components/Notification';
 import UserDropMenu from 'components/UserDropMenu';
-// import InviteUser from 'granite-admin/core/components/InviteUser';
 
 // application imports
 import logoImage from 'assets/logo.png';
@@ -44,6 +41,9 @@ const SidebarButton = ({ icon, label, ...rest }) => (
 const Sidebar = () => {
   const [hover, setHover] = useState(false);
   const [collapsed, setCollapsed] = useState(true);
+  let history = useHistory();
+
+  const goto = (url) => history.push(url);
 
   return (
     <ResponsiveContext.Consumer>
@@ -76,16 +76,23 @@ const Sidebar = () => {
                 flex
                 overflow={{ vertical: "auto", horizontal: "hidden" }}
               >
-                <SidebarButton icon={<StatusInfoSmall />} label="Focus" />
-                <SidebarButton icon={<Projects />} label="Services" />
-                <SidebarButton icon={<Clock />} label="Glances" />
-                <SidebarButton icon={<Split />} label="Flows" />
-                <SidebarButton icon={<Analytics />} label="Analytics" />
-                <SidebarButton icon={<Configure />} label="Configure" />
+                <SidebarButton
+                  icon={<Home />}
+                  label="Home"
+                  onClick={() => goto("/")}
+                />
+                <SidebarButton
+                  icon={<StatusInfoSmall />}
+                  label="Missions"
+                  onClick={() => goto("/missions")}
+                />
+                <SidebarButton
+                  icon={<Projects />}
+                  label="Justice League"
+                  onClick={() => goto("/justice-league")}
+                />
               </Nav>
-              <Notification
-                isCollapsed={isCollapsed && !hover}
-              />
+              <Notification isCollapsed={isCollapsed && !hover} />
               <UserDropMenu isCollapsed={isCollapsed && !hover} />
             </Box>
           </Box>

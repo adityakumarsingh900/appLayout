@@ -1,4 +1,5 @@
 import { Grommet } from "grommet";
+import { BrowserRouter as Router } from "react-router-dom";
 
 import DashboardLayout from "components/DashboardLayout";
 
@@ -14,9 +15,11 @@ const theme = {
 
 function App() {
   return (
-    <Grommet theme={theme}>
-      <DashboardLayout />
-    </Grommet>
+    <Router>
+      <Grommet theme={theme}>
+        <DashboardLayout />
+      </Grommet>
+    </Router>
   );
 }
 
