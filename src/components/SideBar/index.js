@@ -10,10 +10,8 @@ import {
 
 import {
   Analytics,
-  Chat,
   Clock,
   Configure,
-  Help,
   Projects,
   Split,
   StatusInfoSmall,
@@ -21,7 +19,7 @@ import {
   FormPrevious,
 } from "grommet-icons";
 
-// import Notification from 'granite-admin/core/components/Notification';
+import Notification from 'components/Notification';
 import UserDropMenu from 'components/UserDropMenu';
 // import InviteUser from 'granite-admin/core/components/InviteUser';
 
@@ -41,13 +39,6 @@ const SidebarButton = ({ icon, label, ...rest }) => (
       {...rest}
     />
   </Box>
-);
-
-const SidebarFooter = () => (
-  <Nav align="bottom">
-    <SidebarButton icon={<Chat />} label="Chat" />
-    <SidebarButton icon={<Help />} label="Support" />
-  </Nav>
 );
 
 const Sidebar = () => {
@@ -92,9 +83,10 @@ const Sidebar = () => {
                 <SidebarButton icon={<Analytics />} label="Analytics" />
                 <SidebarButton icon={<Configure />} label="Configure" />
               </Nav>
-              <UserDropMenu
+              <Notification
                 isCollapsed={isCollapsed && !hover}
               />
+              <UserDropMenu isCollapsed={isCollapsed && !hover} />
             </Box>
           </Box>
         );
