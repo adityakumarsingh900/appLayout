@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Image } from "grommet";
+import { Box } from "grommet";
 
 import PlayGround from "components/PlayGround";
 
